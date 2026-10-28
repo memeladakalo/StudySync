@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StudySync – Student Collaboration Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">🎓 StudySync</div>
+    <nav class="top-nav">
+      <button id="organiseBtn" class="active">📘 Organise Assignments</button>
+      <button id="motivateBtn">💬 Motivate Peers</button>
+      <button id="liveBtn">🎥 Live Study</button>
+      
+
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== Organise Assignments Section ===== -->
+    <section id="organiseSection" class="page active" aria-label="Organise assignments">
+      <h2>Organise Your Assignments</h2>
+      <div class="task-controls">
+        <button id="newTaskBtn" class="btn primary">+ Add Task</button>
+        <button id="shareBtn" class="btn">🔗 Share StudySync</button>
+      </div>
+      <div class="progress">
+        <label for="progressBar">Progress</label>
+        <progress id="progressBar" value="0" max="100"></progress>
+        <span id="progressText">0% complete</span>
+      </div>
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+
+    <!-- ===== Motivate Peers Section ===== -->
+    <section id="motivateSection" class="page" aria-label="Motivate peers">
+      <h2>Motivate Your Peers</h2>
+      <p class="muted">Celebrate and comment on your friends’ accomplishments!</p>
+      <div id="feed" class="feed"></div>
+    </section>
+  </main>
+
+  <!-- ====== StudySync Live Section ====== -->
+<section id="liveSection" class="page" aria-label="Live Video Sessions">
+  <h2>🎥 StudySync Live</h2>
+  <p class="muted">Start or join a live video session with your peers.</p>
+  
+  <div class="live-controls">
+    <input id="roomCodeInput" placeholder="Enter Group Code" />
+    <button id="startLiveBtn" class="btn primary">Start Live Session</button>
+    <button id="joinLiveBtn" class="btn">Join Session</button>
+  </div>
+
+  <div id="videoContainer" class="video-container">
+    <video id="localVideo" autoplay playsinline muted></video>
+    <video id="remoteVideo" autoplay playsinline></video>
+  </div>
+
+  <button id="endLiveBtn" class="btn danger" style="display:none;">End Session</button>
+</section>
+
+
+  <!-- ===== Dialog for new task ===== -->
+  <div id="taskDialog" class="dialog" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="dialog-content">
+      <h3>Add New Task</h3>
+      <form id="taskForm">
+        <label for="taskTitle">Task title</label>
+        <input id="taskTitle" name="title" required />
+        <label for="taskDue">Due date</label>
+        <input id="taskDue" name="due" type="date" />
+        <div class="actions">
+          <button type="submit" class="btn primary">Save</button>
+          <button type="button" id="cancelTask" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Share dialog ===== -->
+  <div id="shareDialog" class="dialog" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="dialog-content">
+      <h3>Share StudySync</h3>
+      <p>Invite friends or share your group code!</p>
+      <div class="share-icons">
+        <a id="shareWhatsapp" href="#" target="_blank" aria-label="Share via WhatsApp">🟢 WhatsApp</a>
+        <a id="shareFacebook" href="#" target="_blank" aria-label="Share via Facebook">🔵 Facebook</a>
+        <a id="shareX" href="#" target="_blank" aria-label="Share via X">⚫ X (Twitter)</a>
+      </div>
+      <p class="code-line">Group Code: <strong id="groupCode"></strong></p>
+      <button id="closeShare" class="btn primary">Close</button>
+    </div>
+  </div>
+
+  <template id="taskTemplate">
+    <li class="task-item">
+      <div class="task-main">
+        <h3 class="task-title"></h3>
+        <time class="task-due"></time>
+      </div>
+      <div class="task-actions">
+        <button class="complete-btn btn small">✅ Done</button>
+        <button class="celebrate-btn btn small">🎉 Celebrate</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>

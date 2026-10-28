@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync – Sign Up</title>
+    
+
+    <style>
+        /* --- Extra Styling to Enhance the Signup Page --- */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f3f8;
+            background: linear-gradient(
+            135deg,
+            #3a7bd5 0%,
+             #00d2ff 30%,
+              #fbd141 100%,
+               #abec55
+               );
+
+    font-family: Arial, sans-serif;
+    margin: 0;
+        }
+
+        .signup-card {
+            width: 380px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .signup-card h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .input-group input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #bbb;
+            margin-top: 5px;
+        }
+
+        .avatar-preview {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            margin: 10px auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #0077ff;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #005fcc;
+        }
+
+        .terms-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="signup-card">
+        <h2>Create Your StudySync Account</h2>
+
+        <!-- Step indicator -->
+        <p style="text-align:center; font-size:13px; color:#666;">Step 1 of 2 – Account Setup</p>
+
+        <!-- Avatar upload (optional) -->
+        <img id="avatarPreview" class="avatar-preview" src="default-avatar.png" alt="Avatar Preview">
+
+        <div class="input-group">
+            <label>Upload Avatar (optional)</label>
+            <input type="file" id="avatarUpload" accept="image/*">
+        </div>
+
+        <!-- SIGNUP FORM (IDs must stay the same to avoid breaking script.js) -->
+        <form id="signupForm">
+
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="signupUsername" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="signupPassword" required>
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" id="signupConfirm" required>
+            </div>
+
+            <!-- School Details (Optional) -->
+            <div class="input-group">
+                <label>School Name (optional)</label>
+                <input type="text" id="schoolName">
+            </div>
+
+            <div class="input-group">
+                <label>Grade (optional)</label>
+                <select id="grade">
+                    <option value="">Select Grade</option>
+                    <option value="8">Grade 8</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+            </div>
+
+            <!-- Terms checkbox -->
+            <div class="terms-row">
+                <input type="checkbox" required>
+                <label style="font-size:13px;">I agree to the StudySync terms of use</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Create Account</button>
+        </form>
+    </div>
+
+    <script>
+        // --- Avatar Preview JS ---
+        const avatarUpload = document.getElementById("avatarUpload");
+        const avatarPreview = document.getElementById("avatarPreview");
+
+        if (avatarUpload) {
+            avatarUpload.addEventListener("change", () => {
+                const file = avatarUpload.files[0];
+                if (file) avatarPreview.src = URL.createObjectURL(file);
+            });
+        }
+
+        // --- Password Match Warning ---
+        const confirmField = document.getElementById("signupConfirm");
+        const passField = document.getElementById("signupPassword");
+
+        confirmField.addEventListener("input", () => {
+            if (confirmField.value !== passField.value) {
+                confirmField.style.border = "2px solid red";
+            } else {
+                confirmField.style.border = "1px solid #bbb";
+            }
+        });
+    </script>
+
+</body>
+</html>

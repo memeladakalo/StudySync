@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <style>
+  body { font-family: Arial, sans-serif; text-align:center; padding:20px; background:#f0f3f8; }
+  video { width: 80%; max-width: 400px; margin: 20px auto; border-radius: 10px; border: 1px solid #ccc; }
+  button { padding: 10px 20px; margin: 10px; cursor: pointer; border-radius: 6px; border:none; background:#0077ff; color:white; }
+  button:hover { background:#005fcc; }
+</style>
+
+  <body>
+    <h2>Camera Test</h2>
+    <p>Allow your browser to access camera and microphone to test your setup.</p>
+
+    <video id="vid" autoplay playsinline></video>
+    <button id="stopBtn">Stop Camera</button>
+
+    <script>
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => document.getElementById('vid').srcObject = stream)
+        .catch(err => alert('Camera test failed: ' + err.name));
+    </script>
+  </body>
+</html>

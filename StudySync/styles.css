@@ -1,0 +1,272 @@
+/* === General Reset === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #2d6cdf;
+  --secondary: #f5b400;
+  --bg: #f9fafc;
+  --text: #222;
+  --muted: #777;
+  --border: #ddd;
+}
+
+/* === Global Body Styles === */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* === Header === */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.top-nav button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.top-nav button.active,
+.top-nav button:hover {
+  color: var(--secondary);
+}
+
+/* === Buttons === */
+.btn {
+  background: #eee;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: #2557b2;
+}
+
+.btn.small {
+  font-size: 0.85rem;
+  padding: 5px 8px;
+}
+
+/* === Sections === */
+main {
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+/* === Task List === */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.task-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-main h3 {
+  margin-bottom: 4px;
+}
+
+/* === Dialog === */
+.dialog {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.dialog[aria-hidden="false"] {
+  display: flex;
+}
+
+.dialog-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+}
+
+/* === Auth Pages === */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, var(--primary), var(--secondary));
+  color: #fff;
+}
+
+.auth-container {
+  background: #fff;
+  color: var(--text);
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.auth-container h1 {
+  color: var(--primary);
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.auth-container .btn {
+  width: 100%;
+}
+
+.auth-switch {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* === Profile Page === */
+.profile-section {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-card input[type="text"],
+.profile-card textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-nav button {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== StudySync Live Video Section ===== */
+#liveSection {
+  text-align: center;
+  padding: 2rem;
+  background: #f9fafb;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+.live-controls {
+  margin-bottom: 1rem;
+}
+
+.live-controls input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 200px;
+  margin-right: 0.5rem;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+video {
+  width: 300px;
+  height: 220px;
+  border-radius: 12px;
+  background: #000;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.btn.danger {
+  background: #e74c3c;
+  color: #fff;
+}
+#localVideo,
+#remoteVideo {
+    display: none;        /* hide videos initially */
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
